@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <!-- Meta Tags -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <title>Bulb Automações</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
+  <!-- Custom Styles -->
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/responsive.css" rel="stylesheet" />
+
+  <!-- Pop-up Styles -->
+  <style>
+    /* Fundo do pop-up */
+    .popup-overlay {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(211, 211, 211, 1);
+      z-index: 1000;
+    }
+
+    .btn-box button {
+    border-radius: 3px;  /* Borda com 2px de arredondamento */
+    padding: 10px 20px;   /* Espaçamento interno do botão */
+    background-color: #ffffff;  /* Cor de fundo */
+    color: white;  /* Cor do texto */
+    font-size: 16px;  /* Tamanho da fonte */
+    cursor: pointer;  /* Cursor de mão ao passar por cima */
+    transition: background-color 0.3s;  /* Efeito de transição para a cor de fundo */
+  }
+
+  /* Efeito ao passar o mouse */
+  .btn-box button:hover {
+    background-color: #e60000;  /* Cor de fundo ao passar o mouse */
+  }
+    /* Estilo do pop-up */
+    .popup-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(248, 244, 244, 0.9);
+      padding: 2rem;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+      border-radius: 0.5rem;
+      z-index: 1001;
+      max-width: 90%;
+      width: 30rem;
+
+      /* Flexbox para centralizar o conteúdo */
+      display: flex;
+      flex-direction: column; /* Alinhar itens verticalmente */
+      align-items: center; /* Centralizar horizontalmente */
+      justify-content: center; /* Centralizar verticalmente */
+      gap: 1rem; /* Espaçamento entre itens */
+    }
+
+    /* Botão de fechar */
+    .close-btn {
+      align-self: flex-end;
+      cursor: pointer;
+      font-size: 3rem;
+      color: #555;
+    }
+
+    /* Botão principal */
+    .btn-2 {
+      font-weight: 400;
+      font-size: 1.3rem;
+      display: inline-block;
+      padding: 1rem 1.5rem;
+      background-color: #FF0000;
+      color: #ffffff;
+      transition: all 0.3s;
+      border: 0.1rem solid transparent;
+    }
+
+    .btn-2:hover {
+      background-color: transparent;
+      border-color: #FF0000;
+      color: #FF0000;
+    }
+
+    /* Adaptações responsivas para telas menores */
+    @media (max-width: 768px) {
+      .popup-content {
+        width: 90%;
+        padding: 1.5rem;
+      }
+
+      .btn-2 {
+        font-size: 1.1rem;
+        padding: 0.8rem 1.2rem;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+      .popup-content {
+        padding: 1rem;
+      }
+
+      .close-btn {
+        font-size: 2.5rem;
+      }
+    }
+ /* Estilo para o botão de upload */
+    #fileLabel {
+      display: inline-block;
+      background-color: #333; /* Fundo cinza escuro */
+      color: #fff; /* Texto branco */
+      padding: 10px 20px;
+      border-radius: 2px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease; /* Transição suave para a mudança de cor */
+    }
+
+    /* Efeito ao passar o mouse */
+    #fileLabel:hover {
+      background-color: #555; /* Fundo cinza claro */
+    }
+
+    /* Remover o botão de arquivo real */
+    #cvInput {
+      display: none;
+    }
+
+    /* Estilo para o formulário */
+    .form-group {
+      margin: 20px 0;
+    }
+
+    input[type="text"], input[type="email"], input[type="phone"], textarea{
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1.2px solid #ccc;
+      border-radius: 2px;
+      font-color: #000;
+    }
+
+  /* Responsividade geral */
+  @media (max-width: 600px) {
+    select, input[type="text"] {
+      font-size: 14px;  /* Ajusta o tamanho da fonte para telas pequenas */
+      padding: 8px;     /* Ajusta o preenchimento */
+    }
+  }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="hero_area">
+    <div class="hero_bg_box">
+      <div class="img-box">
+        <img src="images/hero-bg.jpeg" alt="">
+      </div>
+    </div>
+
+    <header class="header_section">
+      <div class="header_top">
+        <div class="container-fluid">
+          <div class="contact_link-container">
+            <a href="index.html" class="contact_link1">
+              <img src="images/Logo2.png" alt="Ícone" class="icon" style="height: 50px; width: auto; margin-top: 5px; margin-bottom: 5px;">
+            </a>
+            <a class="contact_link2">
+              <span class="navbar-brand" style="color: #FF0000; text-align:center; margin-left: -50px;">
+                Se o seu desejo é tecnologia, nós realizamos
+              </span>
+            </a>
+            <a href="mailto:contato@bulbautomacoes.com.br?subject=Quero%20Automatizar" class="contact_link3" style="margin-right: 5px;">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="index.html"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""></span>
+            </button>
+
+            <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home  <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="sobre-nos.html">Sobre Nós</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Serviços
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown" 
+                      style="background-color: #1c1c1c !important; backdrop-filter: blur(10px);">
+                    <li><a class="dropdown-item" href="LadinPages/automacao-de-processos-virtuais.html" 
+                           style="color: white !important; padding: 10px; display: block; background-color: #1c1c1c !important;"
+                           onmouseover="this.style.background='rgba(0, 0, 0, 0.5)'" 
+                           onmouseout="this.style.background='#1c1c1c'">Automação de processos virtuais</a></li>
+                    <li><a class="dropdown-item" href="LadinPages/robos-como-servico.html" 
+                           style="color: white !important; padding: 10px; display: block; background-color: #1c1c1c !important;"
+                           onmouseover="this.style.background='rgba(0, 0, 0, 0.5)'" 
+                           onmouseout="this.style.background='#1c1c1c'">Robôs como serviço</a></li>
+                    <li><a class="dropdown-item" href="LadinPages/suporte-&-sustentacao.html" 
+                           style="color: white !important; padding: 10px; display: block; background-color: #1c1c1c !important;"
+                           onmouseover="this.style.background='rgba(0, 0, 0, 0.5)'" 
+                           onmouseout="this.style.background='#1c1c1c'">Suporte e Sustentação</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="parceiros.html">Seja Parceiro</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/Site/Forms.html?form=trabalhe-conosco">Trabalhe Conosco</a>
+                </li>
+                <li class="nav-item" style="background-color: red;">
+                  <a class="nav-link" href="https://wa.me/5511948798009?text=Olá,%20Bulb!%20Desejo%20automatizar%20processos.">Quero Automatizar</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="contact_section layout_padding">
+      <div class="contact_bg_box" style="background-color: white;"></div>
+      <div class="container">
+        <div class="heading_container heading_center">
+          <!-- Título dinâmico será inserido aqui -->
+          <h2 id="formTitle">Contate-nos</h2>
+        </div>
+        <div class="row">
+          <div class="col-md-7 mx-auto">
+            <form id="contactForm" action="https://formspree.io/f/mqaeddev" method="POST" enctype="multipart/form-data">
+              <div class="contact_form-container">
+        
+                <div id="quero-automatizar" class="form-group" style="display: none;">
+                  <input type="text" name="Nome" placeholder="Nome" required />
+                  <input type="text" name="Sobrenome" placeholder="Sobrenome" required />
+                  <input type="text" name="Empresa" placeholder="Empresa" required />
+                  <input type="text" name="Cargo" placeholder="Cargo" required />
+                  <input type="text" name="E-mail" placeholder="E-mail" required />
+                  <input type="text" name="Telefone" placeholder="Telefone" required />
+                  <input type="text" name="Telefone" placeholder="Deseja contratar uma infraestrutura?" required />
+                  <input type="text" name="Quantidade" placeholder="Sua empresa já possui processos automatizados?" required/>
+                  <input type="text" name="Quantidade" placeholder="Quantos processos estima automatizar?" required/>
+                  <input type="text" name="Prazo Início" placeholder="Qual o prazo que sua empresa tem para iniciar o projeto de automatização?" />
+                  <input type="text" name="Prazo Fim" placeholder="Quando planejam concluír esse projeto?" />
+                  <input type="text" name="Complemento" placeholder="Se houver mais pessoas envolvidas no projeto, por favor, informe os e-mails" />
+                  <textarea name="Contexto" placeholder="Fique à vontade para agregar informações adicionais" required style="margin-top: 15px;"></textarea>
+                </div>  
+
+                <div id="automatizar" class="form-group" style="display: none;">
+                  <input type="text" name="Nome" placeholder="Nome" required />
+                  <input type="text" name="Sobrenome" placeholder="Sobrenome" required />
+                  <input type="text" name="Empresa" placeholder="Empresa" required />
+                  <input type="text" name="Cargo" placeholder="Cargo" required />
+                  <input type="text" name="E-mail" placeholder="E-mail" required />
+                  <input type="text" name="Telefone" placeholder="Telefone" required />
+                  <input type="text" name="Maior dor" placeholder="Qual a maior dor que sua empresa deseja resolver nas operações?" required/>
+                  <input type="text" name="Interesse" placeholder="Sua empresa já possui automações personalizadas atualmente?" required/>
+                  <input type="text" name="Quantidade" placeholder="Quantos processos estima automatizar?" required/>
+                  <input type="text" name="Prazo Início" placeholder="Qual o prazo que sua empresa tem para iniciar o projeto de automatização?" />
+                  <input type="text" name="Prazo Fim" placeholder="Quando planejam concluír esse projeto?" />
+                  <input type="text" name="Complemento" placeholder="Se houver mais pessoas envolvidas no projeto, por favor, informe os e-mails" />
+                  <textarea name="Contexto" placeholder="Fique à vontade para agregar informações adicionais" required style="margin-top: 15px;"></textarea>
+                </div>
+
+                <div id="organizar-e-automatizar" class="form-group" style="display: none;">
+                  <input type="text" name="Nome" placeholder="Nome" required />
+                  <input type="text" name="Sobrenome" placeholder="Sobrenome" required />
+                  <input type="text" name="Empresa" placeholder="Empresa" required />
+                  <input type="text" name="Cargo" placeholder="Cargo" required />
+                  <input type="text" name="E-mail" placeholder="E-mail" required />
+                  <input type="text" name="Telefone" placeholder="Telefone" required />
+                  <input type="text" name="Maior dor" placeholder="Qual a maior dor que sua empresa deseja resolver nas operações?" required/>
+                  <input type="text" name="Interesse" placeholder="Sua empresa já possui automações personalizadas atualmente?" required/>
+                  <input type="text" name="Prazo Início" placeholder="Qual o prazo que sua empresa tem para iniciar o projeto de automatização?" />
+                  <input type="text" name="Prazo Fim" placeholder="Quando planejam concluír esse projeto?" />
+                  <input type="text" name="Complemento" placeholder="Se houver mais pessoas envolvidas no projeto, por favor, informe os e-mails" />
+                  <textarea name="Contexto" placeholder="Fique à vontade para agregar informações adicionais" required style="margin-top: 15px;"></textarea>
+                </div>
+
+                <div id="raas" class="form-group" style="display: none;">
+                  <input type="text" name="Nome" placeholder="Nome" required />
+                  <input type="text" name="Sobrenome" placeholder="Sobrenome" required />
+                  <input type="text" name="Empresa" placeholder="Empresa" required />
+                  <input type="text" name="Cargo" placeholder="Cargo" required />
+                  <input type="text" name="E-mail" placeholder="E-mail" required />
+                  <input type="text" name="Telefone" placeholder="Telefone" required />
+                  <input type="text" name="Maior dor" placeholder="Qual a maior dor que sua empresa deseja resolver nas operações?" required/>
+                  <input type="text" name="Interesse" placeholder="Sua empresa já possui automações personalizadas atualmente?" required/>
+                  <input type="text" name="Quantidade" placeholder="Quantos processos estima automatizar?" required/>
+                  <input type="text" name="Prazo Início" placeholder="Qual o prazo que sua empresa tem para iniciar o projeto de automatização?" />
+                  <input type="text" name="Prazo Fim" placeholder="Quando planejam concluír esse projeto?" />
+                  <input type="text" name="Complemento" placeholder="Se houver mais pessoas envolvidas no projeto, por favor, informe os e-mails" />
+                  <textarea name="Contexto" placeholder="Fique à vontade para agregar informações adicionais" required style="margin-top: 15px;"></textarea>
+                </div>
+                
+                <div id="organizar-e-automatizar-raas" class="form-group" style="display: none;">
+                  <input type="text" name="Nome" placeholder="Nome" required />
+                  <input type="text" name="Sobrenome" placeholder="Sobrenome" required />
+                  <input type="text" name="Empresa" placeholder="Empresa" required />
+                  <input type="text" name="Cargo" placeholder="Cargo" required />
+                  <input type="text" name="E-mail" placeholder="E-mail" required />
+                  <input type="text" name="Telefone" placeholder="Telefone" required />
+                  <input type="text" name="Maior dor" placeholder="Qual a maior dor que sua empresa deseja resolver nas operações?" required/>
+                  <input type="text" name="Interesse" placeholder="Sua empresa já possui automações personalizadas atualmente?" required/>
+                  <input type="text" name="Prazo Início" placeholder="Qual o prazo que sua empresa tem para iniciar o projeto de automatização?" />
+                  <input type="text" name="Prazo Fim" placeholder="Quando planejam concluír esse projeto?" />
+                  <input type="text" name="Complemento" placeholder="Se houver mais pessoas envolvidas no projeto, por favor, informe os e-mails" />
+                  <textarea name="Contexto" placeholder="Fique à vontade para agregar informações adicionais" required style="margin-top: 15px;"></textarea>
+                </div>
+
+                <div id="suporte-corretivo" class="form-group" style="display: none;">
+                  <input type="text" name="Nome" placeholder="Nome" required />
+                  <input type="text" name="Sobrenome" placeholder="Sobrenome" required />
+                  <input type="text" name="Empresa" placeholder="Empresa" required />
+                  <input type="text" name="Cargo" placeholder="Cargo" required />
+                  <input type="text" name="E-mail" placeholder="E-mail" required />
+                  <input type="text" name="Telefone" placeholder="Telefone" required />
+                  <input type="text" name="Quantidade" placeholder="Quantos robôs personalizados sua empresa possui?" required />
+                  <input type="text" name="Tempo" placeholder="A quanto tempo em média os robôs foram desenvolvidos?" required />
+                  <input type="text" name="Última Manutenção" placeholder="Já houveram manutenções corretivas nos robôs?"/>
+                  <input type="text" name="Identificação" placeholder="Os problemas nos robôs já foram identificados?" required />
+                  <textarea name="Contexto" placeholder="Fique à vontade para agregar informações adicionais" required style="margin-top: 15px;"></textarea>
+                </div>
+
+                <div id="suporte-preditivo" class="form-group" style="display: none;">
+                  <input type="text" name="Nome" placeholder="Nome" required />
+                  <input type="text" name="Sobrenome" placeholder="Sobrenome" required />
+                  <input type="text" name="Empresa" placeholder="Empresa" required />
+                  <input type="text" name="Cargo" placeholder="Cargo" required />
+                  <input type="text" name="E-mail" placeholder="E-mail" required />
+                  <input type="text" name="Telefone" placeholder="Telefone" required />
+                  <input type="text" name="Quantidade" placeholder="Quantos robôs personalizados sua empresa possui?" required />
+                  <input type="text" name="Tempo" placeholder="A quanto tempo em média os robôs foram desenvolvidos?" required />
+                  <input type="text" name="Última Manutenção" placeholder="Já houve alguma revisão preditiva anteriormente? Se sim, a quanto tempo?" required />
+                  <input type="text" name="Identificação" placeholder="Já ocorreu algum problema durante a execução de algum dos robôs?" required />
+                  <textarea name="Contexto" placeholder="Fique à vontade para agregar informações adicionais" required style="margin-top: 15px;"></textarea>
+                </div>
+
+                <div id="sustentacao" class="form-group" style="display: none;">
+                  <input type="text" name="Nome" placeholder="Nome" required />
+                  <input type="text" name="Sobrenome" placeholder="Sobrenome" required />
+                  <input type="text" name="Empresa" placeholder="Empresa" required />
+                  <input type="text" name="Cargo" placeholder="Cargo" required />
+                  <input type="text" name="E-mail" placeholder="E-mail" required />
+                  <input type="text" name="Telefone" placeholder="Telefone" required />
+                  <textarea name="Quantidade" placeholder="Quantos robôs personalizados sua empresa possui?" required ></textarea>
+                  <textarea name="Tempo" placeholder="A quanto tempo em média os robôs foram desenvolvidos?" required ></textarea>
+                  <textarea name="Última Manutenção" placeholder="Alguma empresa especializada já prestou serviço de sustentação para esses robôs?" required ></textarea>
+                  <textarea name="Identificação" placeholder="Ocorre algum problema recorrente durante a execução de algum dos robôs?" required ></textarea>
+                  <textarea name="Identificação1" placeholder="Sua empresa deseja receber sustentação especializada para todos os robôs?" required ></textarea>
+                  <style>
+                    textarea {
+                      height: 62px !important; /* Define a altura do textarea */
+                      line-height: 20px;       /* Definindo a altura da linha */
+                      padding-left: 15px;      /* Margem à esquerda do texto */
+                      font-size: 0.9rem;       /* Tamanho da fonte */
+                    }
+                  
+                    textarea::placeholder {
+                      color: black;            /* Cor do placeholder */
+                      font-size: 0.9rem;       /* Tamanho da fonte do placeholder */
+                    }
+                  </style>
+                  <textarea name="Contexto" placeholder="Fique à vontade para agregar informações adicionais" required ></textarea>
+                </div>
+
+               <div id="trabalhe-conosco" class="form-group" style="display: none;">
+                <input type="text" name="Nome" placeholder="Nome" required />
+                <input type="text" name="Sobrenome" placeholder="Sobrenome" required />
+                <input type="text" name="E-mail" placeholder="E-mail" required />
+                <input type="text" name="Área" placeholder="Em qual área deseja atuar?" required />
+                <textarea name="Experiência" placeholder="Nos conte um pouco a respeito das suas experiências e áreas de atuação" required style="margin-top: 15px;"></textarea>
+                <textarea name="Contexto" placeholder="Nos fale a respeito de você, como pessoa e como profissional" required style="margin-top: 15px;"></textarea>
+                <!-- Adicionando uma margem inferior para espaçar -->
+               <!-- <label for="cvInput" id="fileLabel" style="margin-top: 15px;">Anexe seu currículo</label> -->
+               <!-- <input type="file" name="CV" id="cvInput" accept=".pdf,.doc,.docx" required /> -->
+              </div>
+
+
+                <div class="btn-box">
+                  <button type="submit">Enviar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a 
+  href="https://wa.me/+5511948798009" 
+  target="_blank" 
+  style="
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: #25d366;
+    color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    z-index: 1000;
+  "
+  id="whatsapp-button"
+>
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 32 32" 
+    style="
+      width: 1.8rem; 
+      height: 1.8rem; 
+      fill: white;
+    "
+  >
+    <path d="M16.003 3A12.942 12.942 0 0 0 3 16c0 2.293.614 4.533 1.777 6.489L3 29l6.648-1.735A12.94 12.94 0 0 0 16.003 29c7.18 0 13-5.82 13-13s-5.82-13-13-13zm0 2C22.076 5 27 9.923 27 16c0 6.075-4.924 11-10.997 11a10.89 10.89 0 0 1-5.438-1.44l-.393-.234-3.946 1.03.806-3.604-.247-.382A10.938 10.938 0 0 1 5 16c0-6.077 4.923-11 10.997-11zm-2.462 6a1 1 0 0 0-.712.324c-.278.301-.689.762-.834 1.178-.193.571-.305 1.248.461 2.5.761 1.244 1.194 1.688 2.12 2.61.926.923 1.63 1.42 2.852 1.888 1.22.467 1.875.393 2.548.25.662-.138 1.533-.7 1.753-1.387.22-.688.22-1.28.155-1.387-.065-.108-.247-.174-.516-.305-.27-.13-1.592-.788-1.84-.876-.25-.088-.43-.13-.61.131-.183.263-.703.875-.862 1.052-.157.175-.312.195-.581.065-.268-.131-1.126-.418-2.143-1.33-.792-.689-1.33-1.54-1.492-1.808-.163-.263-.017-.408.113-.54.122-.12.273-.313.41-.47.138-.157.184-.262.28-.435.094-.175.044-.327-.022-.455-.066-.13-.59-1.411-.812-1.95-.21-.527-.426-.46-.593-.467z"/>
+  </svg>
+</a>
+
+<script>
+  function adjustButtonPosition() {
+    const button = document.getElementById('whatsapp-button');
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 480) { // Para dispositivos móveis
+
+      button.style.right = '1rem'; // Ajusta a posição para dentro da viewport
+      button.style.bottom = '1rem';
+      button.style.width = '3rem'; // Reduz o tamanho do botão
+      button.style.height = '3rem';
+      
+
+    } else { // Para telas maiores
+
+      button.style.right = '1.5rem';
+      button.style.bottom = '1.5rem';
+      button.style.width = '3.5rem';
+      button.style.height = '3.5rem';
+      
+
+    }
+  }
+
+  // Ajusta o botão ao carregar e ao redimensionar a janela
+  window.onload = adjustButtonPosition;
+  window.onresize = adjustButtonPosition;
+</script>
+  </div>
+
+<script>
+  // Função para exibir o formulário baseado no parâmetro da URL e atualizar o título
+  function showFormFromURL() {
+    // Obtém o parâmetro da URL (ex: ?form=raas)
+    const urlParams = new URLSearchParams(window.location.search);
+    const formType = urlParams.get('form'); // Obtém o valor do parâmetro 'form'
+
+    // Oculta todos os formulários
+    var forms = document.querySelectorAll('.form-group');
+    forms.forEach(function(form) {
+      form.style.display = 'none';
+    });
+
+    // Atualiza o título com base no tipo de formulário
+    const formTitle = document.getElementById('formTitle');
+    switch (formType) {
+      case 'quero-automatizar':
+        document.getElementById('quero-automatizar').style.display = 'block';
+        formTitle.textContent = 'Automatize seus processos';
+        break;
+      case 'automatizar':
+        document.getElementById('automatizar').style.display = 'block';
+        formTitle.textContent = 'Automatize seus processos';
+        break;
+      case 'organizar-e-automatizar':
+        document.getElementById('organizar-e-automatizar').style.display = 'block';
+        formTitle.textContent = 'Organize e automatize seus processos';
+        break;
+      case 'raas':
+        document.getElementById('raas').style.display = 'block';
+        formTitle.textContent = 'Robôs como Serviço (RaaS)';
+        break;
+      case 'organizar-e-automatizar-raas':
+        document.getElementById('organizar-e-automatizar-raas').style.display = 'block';
+        formTitle.textContent = 'Organize e automatize seus processos (RaaS)';
+        break;
+      case 'suporte-corretivo':
+        document.getElementById('suporte-corretivo').style.display = 'block';
+        formTitle.textContent = 'Suporte Corretivo';
+        break;
+      case 'suporte-preditivo':
+        document.getElementById('suporte-preditivo').style.display = 'block';
+        formTitle.textContent = 'Suporte Preditivo';
+        break;
+      case 'sustentacao':
+        document.getElementById('sustentacao').style.display = 'block';
+        formTitle.textContent = 'Sustentação de Sistemas';
+        break;
+      case 'trabalhe-conosco':
+        document.getElementById('trabalhe-conosco').style.display = 'block';
+        formTitle.textContent = 'Trabalhe Conosco';
+        break;
+      default:
+        formTitle.textContent = 'Formulário não encontrado';
+        break;
+    }
+  }
+
+  // Chama a função assim que a página carrega
+window.onload = showFormFromURL;
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // JavaScript para atualizar o texto do input de arquivo
+  const fileInput = document.getElementById('cvInput');
+  const fileLabel = document.getElementById('fileLabel');
+
+  // Função que é chamada quando um arquivo é selecionado
+  fileInput.addEventListener('change', function () {
+    if (fileInput.files.length > 0) {
+      fileLabel.textContent = fileInput.files[0].name; // Mostra o nome do arquivo
+    } else {
+      fileLabel.textContent = 'Adicione um arquivo'; // Mostra o texto quando nenhum arquivo é selecionado
+    }
+  });
+</script>
+
+
+
+</body>
+
+</html>

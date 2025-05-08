@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Style popup-->
+  <style>
+      /* Fundo do pop-up */
+      .popup-overlay {
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 1000;
+      }
+
+      .btn-box button {
+      border-radius: 3px;  /* Borda com 2px de arredondamento */
+      padding: 10px 20px;   /* Espaçamento interno do botão */
+      background-color: #ffffff;  /* Cor de fundo */
+      color: white;  /* Cor do texto */
+      font-size: 16px;  /* Tamanho da fonte */
+      cursor: pointer;  /* Cursor de mão ao passar por cima */
+      transition: background-color 0.3s;  /* Efeito de transição para a cor de fundo */
+    }
+    
+      /* Estilo do pop-up */
+      .popup-content {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: rgba(248, 244, 244, 0.9);
+          padding: 2rem;
+          box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+          border-radius: 0.5rem;
+          z-index: 1001;
+          max-width: 90%;
+          width: 30rem;
+
+          /* Flexbox para centralizar o conteúdo */
+          display: flex;
+          flex-direction: column; /* Alinhar itens verticalmente */
+          align-items: center; /* Centralizar horizontalmente */
+          justify-content: center; /* Centralizar verticalmente */
+          gap: 1rem; /* Espaçamento entre itens */
+      }
+
+      /* Botão de fechar */
+      .close-btn {
+          align-self: flex-end; /* Alinhar botão de fechar à direita */
+          cursor: pointer;
+          font-size: 3rem;
+          color: #555;
+      }
+
+      /* Botão principal */
+      .btn-2 {
+          border-radius: 3px;
+          font-weight: 400;
+          font-size: 1.3rem;
+          display: inline-block;
+          padding: 1rem 1.5rem;
+          background-color: #FF0000;
+          color: #ffffff;
+          transition: all 0.3s;
+          border: 0.1rem solid transparent;
+      }
+
+      .btn-2:hover {
+          border-radius: 3px;
+          background-color: transparent;
+          border-color: #FF0000;
+          color: #FF0000;
+      }
+
+      /* Adaptações responsivas para telas menores */
+      @media (max-width: 768px) {
+          .popup-content {
+              width: 90%;
+              padding: 1.5rem;
+          }
+
+          .btn-2 {
+              font-size: 1.1rem;
+              padding: 0.8rem 1.2rem;
+          }
+          
+      }
+
+      @media (max-width: 480px) {
+          .popup-content {
+              padding: 1rem;
+          }
+
+          .close-btn {
+              font-size: 2.5rem;
+          }
+      }
+
+  </style>
+  
+  <!--Style popup fim-->
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <title>Bulb Automações</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <div class="hero_bg_box">
+      <div class="img-box">
+        <img src="images/hero-bg.jpeg" alt="">
+      </div>
+    </div>
+
+    <header class="header_section">
+  <div class="header_top">
+    <div class="container-fluid">
+      <div class="contact_link-container">
+        <a href="index.html" class="contact_link1">
+          <img src="images/Logo2.png" alt="Ícone" class="icon" style="height: 50px; width: auto; margin-top: 5px; margin-bottom: 5px;">
+        </a>
+        <a class="contact_link2">
+          <span class="navbar-brand" style="color: #FF0000; text-align:center; margin-left: -50px;">
+            Se o seu desejo é tecnologia, nós realizamos
+          </span>
+        </a>
+        <a href="mailto:contato@bulbautomacoes.com.br?subject=Quero%20Automatizar" class="contact_link3" style="margin-right: 5px;">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="header_bottom">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="index.html">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""></span>
+        </button>
+
+        <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home  <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sobre-nos.html"> Sobre Nós</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Serviços
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" 
+                  style="background-color: #1c1c1c !important; backdrop-filter: blur(10px);">
+                <li><a class="dropdown-item" href="LadinPages/automacao-de-processos-virtuais.html" 
+                       style="color: white !important; padding: 10px; display: block; background-color: #1c1c1c !important;"
+                       onmouseover="this.style.background='rgba(0, 0, 0, 0.5)'" 
+                       onmouseout="this.style.background='#1c1c1c'">Automação de processos virtuais</a></li>
+                <li><a class="dropdown-item" href="LadinPages/robos-como-servico.html" 
+                       style="color: white !important; padding: 10px; display: block; background-color: #1c1c1c !important;"
+                       onmouseover="this.style.background='rgba(0, 0, 0, 0.5)'" 
+                       onmouseout="this.style.background='#1c1c1c'">Robôs como serviço</a></li>
+                <li><a class="dropdown-item" href="LadinPages/suporte-&-sustentacao.html" 
+                       style="color: white !important; padding: 10px; display: block; background-color: #1c1c1c !important;"
+                       onmouseover="this.style.background='rgba(0, 0, 0, 0.5)'" 
+                       onmouseout="this.style.background='#1c1c1c'">Suporte e Sustentação</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="parceiros.html"> Seja Parceiro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Site/form-trabalhe-conosco.html"> Trabalhe Conosco</a>
+            </li>
+            <li class="nav-item" style="background-color: red;">
+              <a class="nav-link" href="/Site/form-quero-automatizar.html"> Quero Automatizar</a>
+            </li>
+          </ul>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>            
+      </nav>
+    </div>
+  </div>
+</header>
+    <!-- end header section -->
+     
+    <!-- slider section -->
+    <section class=" slider_section ">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <h1>  
+                      <span>
+                        Automação 
+                      </span>
+                      de processos virtuais
+                    </h1>
+                    <p>
+                      Automatize tarefas personalizadas, minimize erros e melhore a perfomance de seus processos.
+                      <br><br>
+                    </p>
+                    <div class="btn-box" >
+                      <a href="/Site/form-automatizar.html" class="btn-2"> Solicite um orçamento </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <h1>
+                      Robôs como serviço 
+                      <span>
+                        (RaaS)
+                      </span>
+                    </h1>
+                    <p>
+                     Com RaaS, você conta com o ambiente Bulb para executar robôs personalizados para suas demandas, sem precisar de infraestrutura própria e com suporte contínuo e especializado.
+
+                    </p>
+                    <div class="btn-box">
+                      <a href="/Site/form-raas.html" class="btn-2"> Solicite um orçamento </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <h1>
+                      <span>
+                        Suporte 
+                      </span>
+                      e Sustentação
+                    </h1>
+                    <p>
+                      Garanta as melhores condições para as suas automações.<br>
+                      Com serviços de suporte corretivo, preditivo e sustentação especializada com melhoria contínua, a Bulb garante a qualidade de
+                      robôs desenvolvidos por nós ou por terceiros.
+
+                    </p>
+                    <div class="btn-box">
+                      <a href="LadinPages/suporte-&-sustentacao" class="btn-2"> Saiba mais </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container idicator_container">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+  <!--popup
+  <div class="popup-overlay" id="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">×</span>
+        <p style="text-align: center; font-size: 1.8rem; color: black;">Olá! É um prazer te receber!</p>
+        <p style="text-align: center; font-size: 1.0rem; color: black;">Estamos prontos para cobrir qualquer orçamento<br><Br>
+           Quando preferir, comprove!</p>
+        <div class="btn-box">
+          <a href="#" class="btn-2" onclick="closePopup()" font-size: 0.8rem;>Entendi</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Verifica se o popup já foi fechado anteriormente
+    if (!localStorage.getItem('popupClosed')) {
+        // Se não, exibe o popup
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    function closePopup() {
+        // Esconde o popup
+        document.getElementById('popup').style.display = 'none';
+        // Marca que o popup foi fechado
+        localStorage.setItem('popupClosed', 'true');
+    }
+</script>-->
+
+    <!--popup fim-->
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+         <h2 style="margin-bottom: 45px;">
+              Sobre nós
+         </h2>
+       </div>
+        <div class="row">
+            <div class="col-md-6 px-0">
+                <div class="img_container">
+                   <div class="img-box">
+                      <!-- A sombra foi escurecida de 0.3 para 0.6 para torná-la mais intensa -->
+                      <img src="images/História.png" alt="" style="border-radius: 15px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);margin-top: 20px;" />
+                      <figcaption style="display: block; text-align: center; font-size: 0.9rem; color: #666; margin-top: 15px;">
+                          Sede fiscal, Avenida Paulista
+                      </figcaption> <!-- Adicionando a legenda -->
+                  </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6 px-0"> <!-- Adicionando espaçamento -->
+                <div class="detail-box" style="box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <div class="heading_container heading_center no-graphic">
+                        <h2 style="border-bottom: none; text-decoration: none; margin-bottom: -10px; text-transform: none; font-size: 2.0rem">
+                            Automação acessível para todos que precisam, e desejam
+                        </h2>
+                    </div>
+                   <p style="font-size: 1.1rem; text-align: center; margin-top: 35px">
+                      
+                      A ideia da Bulb surgiu em 2018 em São Paulo, e sua fundação foi toda construída por especialistas com o propósito de democratizar e facilitar o acesso à tecnologia no Brasil.
+                   </p>
+                   <p style="font-size: 1.1rem; text-align: left;margin-top: 30px">
+                     
+                      <strong>Missão:</strong> Fornecer tecnologia de real impacto para quem precisa
+                      <br><br>
+                      <strong>Visão:</strong> Transformar a modernização em algo mais acessível
+                      <br><br>
+                      <strong>Valor:</strong> Excelência em aplicação e sustentação de automações
+                      <br><br>
+                  </p>
+
+                    <div class="btn-box" style="text-align: center;">
+                        <a href="sobre-nos.html" style="border-radius: 3px;">
+                            Saiba mais
+                        </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+
+  <!-- end about section -->
+
+  <!-- service section -->
+
+  <section class="service_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Nossos serviços
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="box ">
+            <div class="img-box" style="margin-top:15px;">
+              <img src="images/Imagem1.png" alt="Ícone" class="icon" width="100" height="100">
+            </div>
+            <div class="detail-box" style="font-size: 1.1rem; text-transform: none;">
+              <h6 style="text-transform: none; font-size: 1.3rem; margin-top:30px;">
+                Automações Virtuais (RPA)
+              </h6>
+              <p style="font-size: 1.1rem; margin-top:20px;">
+                Para quem deseja implementar processos automatizados, otimizados e eficientes
+              </p>
+              <a style="font-size: 16px; margin-top:20px; margin-bottom: 15px; border-radius: 3px;" href="LadinPages/automacao-de-processos-virtuais.html">
+                Acessar mais detalhes
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="box ">
+            <div class="img-box" style="margin-top:15px;">
+              <img src="images/Imagem3.png" alt="Ícone" class="icon" width="100" height="100">
+            </div>
+            <div class="detail-box" style="font-size: 1.1rem; text-transform: none;">
+              <h6 style="text-transform: none; font-size: 1.3rem; margin-top:30px;">
+                Robôs como Serviço (RaaS)
+              </h6>
+              <p style="font-size: 1.1rem;">
+                Automatize seus processos sem se preocupar com infraestrutura e conte com suporte contínuo
+              </p>
+              <a style="font-size: 16px; margin-top:20px; margin-bottom: 15px; border-radius: 3px;" href="LadinPages/robos-como-servico.html">
+                Acessar mais detalhes
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="box ">
+            <div class="img-box" style="margin-top:15px;">
+              <img src="images/Imagem4.png" alt="Ícone" class="icon" width="100" height="100">
+            </div>
+            <div class="detail-box" style="font-size: 1.1rem; text-transform: none;">
+              <h6 style="text-transform: none; font-size: 1.3rem; margin-top:30px;">
+                Suporte e Sustentação
+              </h6>
+              <p style="font-size: 1.1rem;">
+                Manutenção e melhoria de robôs feitos pela Bulb ​ou por terceiros em qualquer ferramenta do mercado
+              </p>
+              <a style="font-size: 16px; margin-top:20px; margin-bottom: 15px; border-radius: 3px;" href="LadinPages/suporte-&-sustentacao">
+                Acessar mais detalhes
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end service section -->
+ 
+<!--Possibilidades-->
+<section class="servicos">
+  
+</section>
+
+<style>
+  .servicos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+      background-color: #ffffff;
+  }
+
+  .container-possibilidades {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+      max-width: 900px;
+      width: 100%;
+  }
+
+  .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .icon-possibilidades {
+      width: 65px;
+      height: 65px;
+      background-color: #fff;
+      border-radius: 50%;
+      padding: 10px;
+      border: 2px solid #FF0000;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 6px 12px rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .item p {
+      font-size: 16px;
+      color: #000;
+      margin-top: 10px;
+  }
+
+  /* Responsivo: 2 colunas em telas menores */
+  @media (max-width: 768px) {
+      .container-possibilidades {
+          grid-template-columns: repeat(2, 1fr);
+      }
+  }
+
+  /* Responsivo: 1 coluna em telas muito pequenas */
+  @media (max-width: 480px) {
+      .container-possibilidades {
+          grid-template-columns: repeat(1, 1fr);
+      }
+  }
+</style>
+
+<!--Possibilidades FIm-->
+
+  <!-- client section -->
+
+  <section class="client_section layout_padding">
+    <div class="container ">
+      <div class="heading_container heading_center">
+        <h2 style="margin-top: -5rem; margin-bottom: 5rem;">
+          Exemplos de atividades para usar automação
+        </h2>
+        <div class="container-possibilidades">
+          <div class="item">
+              <div class="icon-possibilidades">
+                  <!-- Documento com lupa -->
+                  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="4" y="3" width="16" height="18" rx="2"></rect>
+                      <path d="M9 7H15"></path>
+                      <path d="M9 11H12"></path>
+                      <path d="M9 15H14"></path>
+                      <circle cx="17" cy="17" r="3"></circle>
+                      <line x1="19" y1="19" x2="21" y2="21"></line>
+                  </svg>
+              </div>
+              <p style="font-size: 1.1rem">Leitura de notas fiscais de produtos e serviços</p>
+          </div>
+          <div class="item">
+              <div class="icon-possibilidades">
+                  <!-- Engrenagem -->
+                  <svg width="800px" height="800px" viewBox="0 0 1024 1024" stroke="#FF0000" version="1.1" xmlns="http://www.w3.org/2000/svg">
+           <path d="M512 512m-10 0a10 10 0 1 0 20 0 10 10 0 1 0-20 0Z" fill="#FF0000" />
+     <path d="M512 306.8c27.7 0 54.6 5.4 79.8 16.1 24.4 10.3 46.4 25.1 65.2 44s33.6 40.8 44 65.2c10.7 25.3 16.1 52.1 16.1 79.8 0 27.7-5.4 54.6-16.1 79.8-10.3 24.4-25.1 46.4-44 65.2-18.8 18.8-40.8 33.6-65.2 44-25.3 10.7-52.1 16.1-79.8 16.1-27.7 0-54.6-5.4-79.8-16.1-24.4-10.3-46.4-25.1-65.2-44-18.8-18.8-33.6-40.8-44-65.2-10.7-25.3-16.1-52.1-16.1-79.8 0-27.7 5.4-54.6 16.1-79.8 10.3-24.4 25.1-46.4 44-65.2s40.8-33.6 65.2-44c25.2-10.6 52.1-16.1 79.8-16.1m0-22c-125.4 0-227.1 101.7-227.1 227.1S386.6 739.1 512 739.1c125.4 0 227.1-101.7 227.1-227.1S637.4 284.8 512 284.8z" fill="#FF0000" />
+     <path d="M512 618.7c-58.9 0-106.8-47.9-106.8-106.8S453.1 405.1 512 405.1 618.8 453 618.8 511.9 570.9 618.7 512 618.7z m0-193.5c-47.9 0-86.8 38.9-86.8 86.8s38.9 86.8 86.8 86.8 86.8-38.9 86.8-86.8-38.9-86.8-86.8-86.8z" fill="#FF0000" />
+     <path d="M544.2 107.3l34.1 92.3 7.4 19.9 20.2 6.6c10.3 3.4 32.1 12.9 43.4 18.1l18.7 8.6 18.6-8.9 87.9-41.8 46.4 46.5-41.2 89.4-8.9 19.3 9.6 19c6.8 13.4 12.6 27.5 17.4 41.9l6.7 20.5 20.3 7.2 91.7 32.6v65.7l-92.3 34.1-19.9 7.4-6.6 20.2c-4.7 14.4-10.6 28.4-17.4 41.9l-9.8 19.3 9.3 19.5 41.8 87.9-46.5 46.5-89.1-41.3-19.3-8.9-19 9.6c-13.4 6.8-27.5 12.6-41.9 17.4l-20.5 6.7-7.2 20.3-32.6 91.7h-65.7l-34.1-92.3-7.4-19.9-20.2-6.6c-10.3-3.4-32.1-12.9-43.4-18.1L356 771l-18.6 8.9-87.9 41.8-46.4-46.5 41.2-89.3 8.9-19.3-9.6-19c-6.8-13.4-12.6-27.5-17.4-41.9l-6.7-20.5-20.3-7.2-91.7-32.6v-65.7l92.3-34.1 19.9-7.4 6.6-20.2c3.4-10.3 12.9-32.1 18.1-43.4l8.6-18.7-8.9-18.6-41.8-87.9 46.4-46.4 89.3 41.2 19.3 8.9 19-9.6c13.4-6.8 27.5-12.6 41.9-17.4l20.5-6.7 7.2-20.3 32.6-91.7h65.7m30.7-44.1H447.4l-43 121c-16.6 5.5-32.7 12.1-48.1 19.9l-117.2-54-90.1 90.1 55.2 116s-14.5 31.4-19.9 48.1l-121 44.7v127.4l121 43c5.5 16.6 12.1 32.6 19.9 48l-54 117.2 90.1 90.1 116-55.2s31.4 14.5 48.1 19.9l44.7 121h127.4l43-121c16.6-5.5 32.6-12.1 48-19.9l117.2 54 90.1-90.1-55.2-116c7.8-15.4 14.5-31.4 19.9-48l121-44.7V447.4l-121-43c-5.5-16.6-12.1-32.6-19.9-48l54-117.2-90.1-90.1-115.9 55.2s-31.5-14.5-48.1-19.9L574.9 63.3z" fill="#FF0000" /></svg>
+              </div>
+              <p style="font-size: 1.1rem">Lançamento de dados em ERP TOTVS, SAP e outros</p>
+          </div>
+          <div class="item">
+              <div class="icon-possibilidades">
+                  <!-- Tabela de dados (Nova versão) -->
+                  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="4" width="18" height="16"></rect>
+                      <line x1="3" y1="8" x2="21" y2="8"></line>
+                      <line x1="3" y1="12" x2="21" y2="12"></line>
+                      <line x1="3" y1="16" x2="21" y2="16"></line>
+                      <line x1="7" y1="4" x2="7" y2="20"></line>
+                      <line x1="14" y1="4" x2="14" y2="20"></line>
+                  </svg>
+              </div>
+              <p style="font-size: 1.1rem">Leitura e manipulação de planilhas e arquivos</p>
+          </div>
+          <div class="item">
+              <div class="icon-possibilidades">
+                  <!-- Página web com lupa -->
+                  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="4" width="18" height="16"></rect>
+                      <circle cx="9" cy="12" r="3"></circle>
+                      <line x1="12" y1="15" x2="15" y2="18"></line>
+                      <line x1="3" y1="8" x2="21" y2="8"></line>
+                      <circle cx="18" cy="6" r="1"></circle>
+                  </svg>
+              </div>
+              <p style="font-size: 1.1rem">Acesso a sites, download de arquivos e preenchimento de formulários</p>
+          </div>
+          <div class="item">
+              <div class="icon-possibilidades">
+                  <!-- Envelope de carta -->
+                  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                      <path d="M3 5L12 12L21 5"></path>
+                  </svg>
+              </div>
+              <p style="font-size: 1.1rem">Leitura e envio de e-mails</p>
+          </div>
+          <div class="item">
+              <div class="icon-possibilidades">
+                  <!-- Dois balões de mensagens com texto -->
+                 <svg width="800px" height="800px" viewBox="0 0 960 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M288.152 601.937C235.508 648.585 186.371 697.952 125.625 734.413C111.419 743.165 90.7952 749.824 77.6772 735.402C64.1912 721.346 72.1022 702.174 81.1212 688.141C101.503 654.411 124.094 622.858 141.343 587.191C47.6342 564.087 59.8662 456.485 63.0542 381.043C66.6162 335.86 67.3062 289.3 84.4522 246.693C101.449 200.566 155.143 183.149 200.546 183.337C283.164 184.776 366.069 183.412 448.502 189.393C508.4 194.593 549.683 215.707 551.359 281.719C651.904 295.35 837.843 249.561 858.103 390.532C865.276 474.837 876.494 562.407 855.593 645.387C847.723 675.09 824.337 689.923 794.989 695.472C805.309 744.198 825.228 791.747 827.661 841.657C819.599 906.598 758.553 852.216 732.715 830.401C696.052 799.562 660.102 767.875 623.816 736.586C607.999 725.794 594.905 703.488 573.228 709.022C470.104 728.478 295.381 747.847 288.152 601.937ZM776.462 805.791C768.851 770.898 757.575 737.428 747.995 703.061C736.306 669.856 760.776 651.597 791.28 648.092C803.766 646.289 810.679 638.693 812.659 626.889C826.961 552.663 819.148 476.441 812.425 401.738C809.022 364.359 795.247 352.038 759.638 342.271C646.582 321.815 531.414 338.531 417.271 337.747C355.033 336.982 346.643 391.616 340.669 441.286C337.722 467.047 335.914 492.992 334.895 518.909C335.212 568.903 320.991 650.464 383.603 667.251C399.509 671.526 416.248 673.898 432.722 674.623C680.438 670.11 537.715 611.587 776.462 805.791ZM509.44 282.274C509.211 261.272 501.877 242.03 476.784 238.182C388.558 223.485 298.609 231.041 209.553 228.638C104.272 226.571 118.669 303.373 110.248 382.076C109.046 416.793 108.837 451.687 110.949 486.338C113.085 521.381 124.286 532.649 157.993 541.765C219.46 557.324 176.578 620.21 158.496 655.172C192.52 635.068 249.987 554.904 286.385 553.847C299.573 361.389 281.296 281.152 509.44 282.274Z" fill="#FF0000"/>
+    <path d="M381.812 912.166C384.332 886.627 386.926 861.095 389.337 835.546C392.399 813.01 385.982 769.893 418.518 770.771C432.298 771.684 443.014 783.77 441.451 799.346C437.004 843.66 431.811 887.903 426.521 932.127C425.261 942.658 416.409 950.034 406.478 950.591C384.788 951.439 381.399 929.563 383.104 912.246C382.674 912.219 382.243 912.192 381.812 912.166Z" fill="#FF0000"/>
+    <path d="M662.318 76.9453C701.308 79.7963 687.961 111.481 674.755 132.921C662.968 157.178 651.4 181.542 639.468 205.727C633.921 218.733 621.681 234.86 606.215 226.734C593.692 221.039 592.996 204.979 598.626 193.723C613.997 159.482 629.384 125.246 645.132 91.1763C649.187 82.4053 656.428 77.1173 662.318 76.9453Z" fill="#FF0000"/>
+    <path d="M535.355 149.796C537.399 175.376 505.714 184.733 495.989 162.349C488.124 141.998 480.836 121.366 474.601 100.464C466.813 73.1709 508.647 59.3279 519.143 85.8289C527.196 105.465 530.789 130.768 535.355 149.796Z" fill="#FF0000"/>
+    <path d="M313.174 748.827C308.023 764.425 290.39 778.041 277.302 788.394C254.765 807.387 225.564 778.1 245.09 755.863C253.585 745.625 262.845 735.864 272.769 727.015C289.17 712.867 314.404 724.26 313.174 748.827Z" fill="#FF0000"/>
+    <path d="M700.688 260.833C675.835 259.659 671.395 227.766 693.338 218.132C713.226 208.978 746.743 180.459 762.054 208.561C767.533 219.662 762.544 232.768 749.639 239.475C733.591 247.119 718.096 256.639 700.688 260.833Z" fill="#FF0000"/>
+    <path d="M570.949 817.842C571.008 842.084 538.873 847.73 527.925 827.798C515.494 809.07 493.098 779.059 520.202 763.102C532.691 756.197 548.894 760.697 555.684 774.516C561.476 788.305 568.741 803.042 570.949 817.842Z" fill="#FF0000"/>
+    <path d="M776.463 805.79C537.624 611.55 680.564 670.122 432.724 674.626C416.248 673.898 399.51 671.525 383.606 667.25C320.918 650.441 335.33 568.927 334.894 518.91C335.915 492.992 337.722 467.047 340.668 441.285C346.699 391.737 354.913 336.957 417.273 337.753C531.415 338.529 646.58 321.819 759.639 342.268C795.217 352.087 809.038 364.329 812.423 401.739C819.154 476.438 826.958 552.666 812.662 626.889C810.68 638.693 803.767 646.289 791.28 648.091C760.67 651.53 736.4 669.919 747.997 703.062C757.579 737.433 768.844 770.882 776.463 805.79Z" fill="white"/>
+    <path d="M509.442 282.274C281.049 281.106 299.61 361.791 286.388 553.847C250.056 554.857 192.452 635.124 158.499 655.172C176.569 620.286 219.466 557.286 157.994 541.765C124.289 532.649 113.088 521.381 110.952 486.338C108.84 451.687 109.049 416.793 110.251 382.075C118.677 303.414 104.262 226.561 209.555 228.643C298.612 231.04 388.557 223.487 476.786 238.18C501.879 242.031 509.213 261.272 509.442 282.274Z" fill="#FF0000"/>
+    
+    </svg>
+              </div>
+              <p style="font-size: 1.1rem">Envio de mensagens por SMS e WhatsApp</p>
+          </div>
+      </div>
+        <h2 style="margin-top: 5rem;">
+          Cases de sucesso
+        </h2>
+      </div>
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/carrosel2.png" alt="" width="25" height="130">
+              </div>
+              <div class="detail-box" style="font-size: 1.1rem">
+                <h4 style="font-size: 1.3rem; margin-top: 10px;">
+                  Emissão de notas fiscais
+                </h4>
+                <p style="font-size: 1.1rem">
+                  Automação do processo de acesso a diferentes tipos de sites de prefeituras, para baixar
+                  notas fiscais e registrá-las em sistemas de controle de contabilidade
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/carrosel1.png" alt="" width="25" height="130">
+              </div>
+              <div class="detail-box" style="font-size: 1.1rem;">
+                <h4 style="font-size: 1.3rem; margin-top: 10px;">
+                  Captação de Leads
+                </h4>
+                <p style="font-size: 1.1rem">
+                  Busca automática por diversos dados de perfis de possíveis clientes em diferentes 
+                  bases de dados da internet, para fomentar campanhas comerciais e de marketing
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/carrosel2.png" alt="" width="25" height="130">
+              </div>
+              <div class="detail-box" style="font-size: 1.1rem">
+                <h4 style="font-size: 1.3rem; margin-top: 10px;">
+                  Chatbots
+                </h4>
+                <p style="font-size: 1.1rem">
+                  Aplicação de robôs para assumir conversas via Whatsapp, Telegram e outras plataformas de comunicação de acordo com roteiros de conversas programadas
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/carrosel2.png" alt="Ícone" class="icon" width="25" height="130">
+              </div>
+              <div class="detail-box" style="font-size: 1.1rem">
+                <h4 style="font-size: 1.3rem; margin-top: 10px;">
+                  Interação com planilhas
+                </h4>
+                <p style="font-size: 1.1rem">
+                  Um robô consegue organizar, adicionar, eliminar e condicionar dados em planilhas de Excel e outras ferramentas para gerar dados estruturados
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/carrosel2.png" alt="Ícone" class="icon" width="25" height="130">
+              </div>
+              <div class="detail-box" style="font-size: 1.1rem">
+                <h4 style="font-size: 1.3rem; margin-top: 10px;">
+                  Manipulação de arquivos e dados
+                </h4>
+                <p style="font-size: 1.1rem">
+                  Um robô consegue coletar informações de clientes a partir de leitura de PDFs, imagens e outros documentos, realizar verificações de conformidade e registrar os dados em sistemas de forma precisa
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/carrosel1.png" alt="Ícone" class="icon" width="25" height="130">
+              </div>
+              <div class="detail-box" style="font-size: 1.1rem">
+                <h4 style="font-size: 1.3rem; margin-top: 10px;">
+                  Preenchimento de fichas e formulários
+                </h4>
+                <p style="font-size: 1.1rem">
+                  Automação do processo de obtenção de dados de planilhas, sites e de e-mails para completar campos de ERPs ou fichas em plataformas virtuais
+                </p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="carousel_btn-box">
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end client section -->
+
+  <!-- contact section -->
+
+  <section class="team_section layout_padding" style="background-color: #1c1c1c; color: #ffffff;">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2 style="margin-bottom: 42px;">
+          Seja Parceiro
+        </h2>
+        <p style="font-size: 1.1rem">
+          Com nossos modelos de parceria, sem burocracia, você pode espalhar tecnologia para mais gente e lucrar com isso. <br> Consulte os detalhes dos modelos para saber qual faz mais sentido para você.
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 mx-auto " onclick="window.location.href='parceiros.html#Autorizada'">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/t1.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Revenda Autorizada
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mx-auto " onclick="window.location.href='parceiros.html#Impulsionadores'">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/t2.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Impulsionadores
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="https://wa.me/+5511948798009">
+          Saiba mais
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact_section layout_padding">
+  <div class="contact_bg_box">
+    <div class="img-box">
+      <img src="images/contact-bg.jpg" alt="">
+    </div>
+  </div>
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>Contate-nos</h2>
+    </div>
+    <div class="">
+      <div class="row">
+        <div class="col-md-7 mx-auto">
+          <form action="https://formspree.io/f/mqaeddev" method="POST">
+            <div class="contact_form-container">
+              <div>
+                <div>
+                  <input type="text" name="Nome da empresa" placeholder="Nome ou empresa" style="border-radius: 2px;" />
+                </div>
+                <div>
+                  <input type="email" name="Email" placeholder="E-mail " style="border-radius: 2px;" />
+                </div>
+                <div>
+                  <input type="phone" name="Telefone" placeholder="Telefone " style="border-radius: 2px;" />
+                </div>
+                <div>
+                  <input type="text" name="Automacao" placeholder="Já possui automação? " style="border-radius: 2px;" />
+                </div>
+                <div>
+                  <input type="text" name="Interesse" placeholder="Tenho interesse em..." style="border-radius: 2px;" />
+                </div>
+                <div class="">
+                  <input type="text" name="Mensagem" placeholder="Mensagem" class="message_input" style="border-radius: 2px;" />
+                </div>
+                <div class="btn-box ">
+                  <button type="submit">
+                    Enviar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- end contact section -->
+
+  <!-- team section -->
+
+  
+
+  <!-- end team section -->
+  <!--Botão whatsapp-->
+  <a 
+  href="https://wa.me/+5511948798009" 
+  target="_blank" 
+  style="
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: #25d366;
+    color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    z-index: 1000;
+  "
+  id="whatsapp-button"
+>
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 32 32" 
+    style="
+      width: 1.8rem; 
+      height: 1.8rem; 
+      fill: white;
+    "
+  >
+    <path d="M16.003 3A12.942 12.942 0 0 0 3 16c0 2.293.614 4.533 1.777 6.489L3 29l6.648-1.735A12.94 12.94 0 0 0 16.003 29c7.18 0 13-5.82 13-13s-5.82-13-13-13zm0 2C22.076 5 27 9.923 27 16c0 6.075-4.924 11-10.997 11a10.89 10.89 0 0 1-5.438-1.44l-.393-.234-3.946 1.03.806-3.604-.247-.382A10.938 10.938 0 0 1 5 16c0-6.077 4.923-11 10.997-11zm-2.462 6a1 1 0 0 0-.712.324c-.278.301-.689.762-.834 1.178-.193.571-.305 1.248.461 2.5.761 1.244 1.194 1.688 2.12 2.61.926.923 1.63 1.42 2.852 1.888 1.22.467 1.875.393 2.548.25.662-.138 1.533-.7 1.753-1.387.22-.688.22-1.28.155-1.387-.065-.108-.247-.174-.516-.305-.27-.13-1.592-.788-1.84-.876-.25-.088-.43-.13-.61.131-.183.263-.703.875-.862 1.052-.157.175-.312.195-.581.065-.268-.131-1.126-.418-2.143-1.33-.792-.689-1.33-1.54-1.492-1.808-.163-.263-.017-.408.113-.54.122-.12.273-.313.41-.47.138-.157.184-.262.28-.435.094-.175.044-.327-.022-.455-.066-.13-.59-1.411-.812-1.95-.21-.527-.426-.46-.593-.467z"/>
+  </svg>
+</a>
+
+<script>
+  function adjustButtonPosition() {
+    const button = document.getElementById('whatsapp-button');
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 480) { // Para dispositivos móveis
+
+      button.style.right = '1rem'; // Ajusta a posição para dentro da viewport
+      button.style.bottom = '1rem';
+      button.style.width = '3rem'; // Reduz o tamanho do botão
+      button.style.height = '3rem';
+      
+
+    } else { // Para telas maiores
+
+      button.style.right = '1.5rem';
+      button.style.bottom = '1.5rem';
+      button.style.width = '3.5rem';
+      button.style.height = '3.5rem';
+      
+
+    }
+  }
+
+  // Ajusta o botão ao carregar e ao redimensionar a janela
+  window.onload = adjustButtonPosition;
+  window.onresize = adjustButtonPosition;
+</script>
+
+
+
+
+
+
+
+  <!--Botão Whataapp Fim-->
+  <!-- info section -->
+  <section class="info_section ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>
+              Redes sociais
+            </h5>
+          </div>
+          <div class="info_contact">
+            <a><span href="https://www.linkedin.com/company/bulbautomacoes" class="">Linkedin: Bulb Automações</span><br>
+            <span href="https://www.instagram.com/bulbautomacoes?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="">Instagram: @bulbautomacoes</span></a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_links">
+            <h5>
+              Contatos
+            </h5>
+            <ul>
+              <li>
+          <a href="https://wa.me/+5511948798009" class="">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <span>
+              +55 (11) 94879-8009    
+            </span>
+          </a>
+          <br> <!-- Quebra de linha -->
+          <a href="mailto:contato@bulbautomacoes.com.br?subject=Quero%20Automatizar" class="">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <span style="font-size: 0.84rem;">
+              contato@bulbautomacoes.com.br
+            </span>
+          </a>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>
+              Endereço fiscal
+            </h5>
+          </div>
+          <div class="info_contact">
+            <a class="">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>
+                Avenida Paulista, São Paulo.
+                <br>
+                1106 - Sala 01 - 16º andar
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_form ">
+            <h5>
+              Sugestões
+            </h5>
+            <form
+            action="https://formspree.io/f/mvggpnyd"
+            method="POST"
+            >
+              <input type="text" placeholder="Digite sua sugestão"><br><br>
+              <input type="email" name="Email" placeholder="Digite seu e-mail " />
+              <button type="submit">
+                Enviar
+              </button>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+
+
+
+
+  <!-- footer section -->
+  <footer class="container-fluid footer_section">
+    <p>
+      &copy; <span id="currentYear"></span> All Rights Reserved. Design by
+      <a>Bulb Tecnologias</a>
+    </p>
+  </footer>
+  <!-- footer section -->
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+
+</html>
